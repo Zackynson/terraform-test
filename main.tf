@@ -34,5 +34,4 @@ module "teste-lambda-2" {
   aws_api_gateway_resource_path_part = "teste-2"
   aws_api_gateway_method_http_method = "GET"
   iam_for_lambda_arn                 = module.iam.iam_for_lambda_arn
-
 }
