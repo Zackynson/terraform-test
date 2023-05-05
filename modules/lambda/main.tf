@@ -1,4 +1,4 @@
-data "archive_file" "code-to-zip" {
+data "archive_file" "code_to_zip" {
   output_path = var.output_path
   source_file = var.source_file
   type        = "zip"
@@ -6,14 +6,14 @@ data "archive_file" "code-to-zip" {
 
 
 resource "aws_lambda_function" "lambda" {
-  filename         = data.archive_file.code-to-zip.output_path
+  filename         = data.archive_file.code_to_zip.output_path
   function_name    = var.lambda_function_name
   role             = var.iam_for_lambda_arn
   handler          = "index.handler"
   runtime          = "nodejs16.x"
   timeout          = 30
   memory_size      = 128
-  source_code_hash = data.archive_file.code-to-zip.output_base64sha256
+  source_code_hash = data.archive_file.code_to_zip.output_base64sha256
 }
 
 
