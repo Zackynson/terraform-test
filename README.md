@@ -1,4 +1,4 @@
-# Lambda functions and API Gateway with terraform
+# Lambda functions and API Gateway with terraform modules
 
 I am using this repo to learn and improve my skills with terraform
 In this case I'm using terraform modules to create reusable resources
