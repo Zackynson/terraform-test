@@ -15,7 +15,7 @@ module "teste-lambda" {
   rest_api_id                        = module.api-gateway.rest_api_id
   lambda_function_name               = "new-name"
   output_path                        = "${path.module}/dist/hello-world.zip"
-  source_file                        = "${path.module}/hello-world/index.js"
+  source_file                        = "${path.module}/src/hello-world/index.js"
   aws_api_gateway_method_http_method = "POST"
   iam_for_lambda_arn                 = module.iam.iam_for_lambda_arn
   aws_api_gateway_resource_id        = module.api-gateway.resource_teste_id
@@ -29,7 +29,7 @@ module "teste-lambda-2" {
   rest_api_id                        = module.api-gateway.rest_api_id
   lambda_function_name               = "new-name-2"
   output_path                        = "${path.module}/dist/hello-world-2.zip"
-  source_file                        = "${path.module}/hello-world-2/index.js"
+  source_file                        = "${path.module}/src/hello-world-2/index.js"
   aws_api_gateway_method_http_method = "GET"
   iam_for_lambda_arn                 = module.iam.iam_for_lambda_arn
   aws_api_gateway_resource_id        = module.api-gateway.resource_teste_id
