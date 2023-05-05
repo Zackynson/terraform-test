@@ -5,7 +5,7 @@
 
 module.exports.handler = async (event) => {
   console.log('Event: ', event);
-  let responseMessage = 'Hello, 1!';
+  let responseMessage = 'Hello, 2!';
 
 
   return {

@@ -25,15 +25,9 @@ resource "aws_lambda_permission" "permission_for_lambda" {
   source_arn    = "${var.rest_api_execution_arn}*/*"
 }
 
-resource "aws_api_gateway_resource" "resource" {
-  rest_api_id = var.rest_api_id
-  parent_id   = var.rest_api_root_resource_id
-  path_part   = var.aws_api_gateway_resource_path_part
-}
-
 resource "aws_api_gateway_method" "method" {
   rest_api_id   = var.rest_api_id
-  resource_id   = aws_api_gateway_resource.resource.id
+  resource_id   = var.aws_api_gateway_resource_id
   http_method   = var.aws_api_gateway_method_http_method
   authorization = "NONE"
 }
@@ -42,7 +36,7 @@ resource "aws_api_gateway_method" "method" {
 resource "aws_api_gateway_integration" "integration" {
   http_method             = aws_api_gateway_method.method.http_method
   rest_api_id             = var.rest_api_id
-  resource_id             = aws_api_gateway_resource.resource.id
+  resource_id             = var.aws_api_gateway_resource_id
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.lambda.invoke_arn
@@ -56,5 +50,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   principal     = "apigateway.amazonaws.com"
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
-  source_arn = "arn:aws:execute-api:us-east-1:566163553601:${var.rest_api_id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
+  source_arn = "arn:aws:execute-api:us-east-1:566163553601:${var.rest_api_id}/*/${aws_api_gateway_method.method.http_method}${var.aws_api_gateway_resource_path}"
 }
