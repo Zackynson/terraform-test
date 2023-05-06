@@ -3,6 +3,13 @@
 
 terraform {
 
+  backend "s3" {
+    # The name of your Terraform Cloud organization.
+    bucket = "teste-terraform-bucket-zackynson"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+
   required_providers {
     aws = {
       source = "hashicorp/aws"
