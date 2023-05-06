@@ -12,6 +12,6 @@ variable "iam_for_lambda_arn" {}
 variable "lambda_function_name" {}
 variable "output_path" {}
 variable "source_file" {}
-variable "aws_api_gateway_method_http_method" {}
-variable "aws_api_gateway_resource_id" {}
+variable "api_gateway_resource_http_method" {}
+variable "api_gateway_resource_id" {}
 variable "aws_api_gateway_resource_path" {}

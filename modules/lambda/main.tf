@@ -27,8 +27,8 @@ resource "aws_lambda_permission" "permission_for_lambda" {
 
 resource "aws_api_gateway_method" "method" {
   rest_api_id   = var.rest_api_id
-  resource_id   = var.aws_api_gateway_resource_id
-  http_method   = var.aws_api_gateway_method_http_method
+  resource_id   = var.api_gateway_resource_id
+  http_method   = var.api_gateway_resource_http_method
   authorization = "NONE"
 }
 
@@ -36,7 +36,7 @@ resource "aws_api_gateway_method" "method" {
 resource "aws_api_gateway_integration" "integration" {
   http_method             = aws_api_gateway_method.method.http_method
   rest_api_id             = var.rest_api_id
-  resource_id             = var.aws_api_gateway_resource_id
+  resource_id             = var.api_gateway_resource_id
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.lambda.invoke_arn
