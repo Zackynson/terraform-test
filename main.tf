@@ -17,9 +17,9 @@ module "teste-lambda" {
   output_path                      = "${path.module}/dist/hello-world.zip"
   source_file                      = "${path.module}/src/hello-world/index.js"
   api_gateway_resource_http_method = "POST"
-  iam_for_lambda_arn               = module.iam.iam_for_lambda_arn
+  iam_role_for_lambda_arn          = module.iam.iam_role_for_lambda_arn
   api_gateway_resource_id          = module.api-gateway.resource_teste_id
-  aws_api_gateway_resource_path    = module.api-gateway.resource_teste_path
+  api_gateway_resource_path        = module.api-gateway.resource_teste_path
 }
 
 module "teste-lambda-2" {
@@ -31,7 +31,7 @@ module "teste-lambda-2" {
   output_path                      = "${path.module}/dist/hello-world-2.zip"
   source_file                      = "${path.module}/src/hello-world-2/index.js"
   api_gateway_resource_http_method = "GET"
-  iam_for_lambda_arn               = module.iam.iam_for_lambda_arn
+  iam_role_for_lambda_arn          = module.iam.iam_role_for_lambda_arn
   api_gateway_resource_id          = module.api-gateway.resource_teste_id
-  aws_api_gateway_resource_path    = module.api-gateway.resource_teste_path
+  api_gateway_resource_path        = module.api-gateway.resource_teste_path
 }

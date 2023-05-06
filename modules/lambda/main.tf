@@ -8,7 +8,7 @@ data "archive_file" "code_to_zip" {
 resource "aws_lambda_function" "lambda" {
   filename         = data.archive_file.code_to_zip.output_path
   function_name    = var.lambda_function_name
-  role             = var.iam_for_lambda_arn
+  role             = var.iam_role_for_lambda_arn
   handler          = "index.handler"
   runtime          = "nodejs16.x"
   timeout          = 30
@@ -50,5 +50,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   principal     = "apigateway.amazonaws.com"
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
-  source_arn = "arn:aws:execute-api:us-east-1:566163553601:${var.rest_api_id}/*/${aws_api_gateway_method.method.http_method}${var.aws_api_gateway_resource_path}"
+  source_arn = "arn:aws:execute-api:us-east-1:566163553601:${var.rest_api_id}/*/${aws_api_gateway_method.method.http_method}${var.api_gateway_resource_path}"
 }

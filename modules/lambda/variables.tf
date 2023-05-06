@@ -3,15 +3,20 @@
 
 # Input variable definitions
 
+# stage and region variables
 variable "aws_region" {}
 
+# api resources info
 variable "rest_api_execution_arn" {}
 variable "rest_api_id" {}
+variable "api_gateway_resource_id" {}
+variable "api_gateway_resource_path" {}
+variable "api_gateway_resource_http_method" {}
 
-variable "iam_for_lambda_arn" {}
+# lambda role and name
+variable "iam_role_for_lambda_arn" {}
 variable "lambda_function_name" {}
+
+# source code 
 variable "output_path" {}
 variable "source_file" {}
-variable "api_gateway_resource_http_method" {}
-variable "api_gateway_resource_id" {}
-variable "aws_api_gateway_resource_path" {}
